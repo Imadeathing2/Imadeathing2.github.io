@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> My Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+
+var background = new
+sjs.Image("Images/background.jpg");
+background.setSize(sjs.getWidth(), sjs.getHeight());
+
+var menu_text = new sjs.Text("Welcome to Space Combat!", 28, "blue");
+menu_text.centerH();
+
+var info_text = new sjs.Text("Created By Charles Wagner", 20, "white");
+info_text.bottom().centerH();
+
+var controls_text = new sjs.Text("This is a two player game in which you shoot at each other is space ships! Player 1 uses the arrow keys to move and M to shoot, while player 2 uses WASD to move and Q to shoot. Last one standing wins!", 28, "blue");
+controls_text.center().offset(0,-30);
+
+var startBtn = new sjs.Button("Start", function(){
+window.location = "space combat.html";
+});
+startBtn.center().offset(0,100);
+
+}
+</script>
+</head>
+<body onload="start()">
+<h1> Space Combat </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

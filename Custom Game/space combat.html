@@ -1,0 +1,276 @@
+<html>
+<head>
+<title> Fight </title>
+<script src="https://simplycodingcourses.com/files/simply.js"></script>
+<script>
+function start(){
+sjs.open("target",1000,550);
+
+var background = new
+sjs.Image("Images/background.jpg");
+background.setSize(sjs.getWidth(), sjs.getHeight());
+
+var player1 = new
+sjs.Image("Images/right_ship_1.gif");
+player1.type="player1";
+player1.setSize(100,75);
+player1.friction = .2;
+player1.accel = .25;
+player1.center().offset(-300, 0);
+
+var r_facing = true;
+var r_track = 0;
+var l_track = 0;
+var u_track = 0;
+var d_track = 0;
+
+sjs.keyDown(RIGHT_KEY, function(){
+player1.setImage("Images/right_ship_1.gif");
+player1.pushRight();
+player1.setSize(100,75);
+r_facing = true;
+l_facing = false;
+u_facing = false;
+d_facing = false;
+});
+sjs.keyDown(LEFT_KEY, function(){
+player1.setImage("Images/left_ship_1.gif");
+player1.pushLeft();
+player1.setSize(100,75);
+l_facing = true;
+r_facing = false;
+u_facing = false;
+d_facing = false;
+});
+sjs.keyDown(UP_KEY, function(){
+	player1.setImage("Images/forward_ship_1.gif");
+player1.pushUp();
+player1.setSize(75,100);
+u_facing = true;
+r_facing = false;
+l_facing = false;
+d_facing = false;
+});
+sjs.keyDown(DOWN_KEY, function(){
+	player1.setImage("Images/down_ship_1.gif");
+player1.pushDown();
+player1.setSize(75,100);
+d_facing = true;
+r_facing = false;
+l_facing = false;
+u_facing = false;
+});
+
+var canShoot1 = true;
+sjs.keyDown(M_KEY, function(){
+if(canShoot1 == true){
+	if(r_facing == true){
+var rightlaser1 = new sjs.Image("Images/left_right_lazer-1.png");
+rightlaser1.type = "laser";
+rightlaser1.setSize(15,22);
+rightlaser1.friction = 0;
+rightlaser1.moveTo(player1.getX()+85,player1.getY()+26);
+rightlaser1.pushRight(40);
+canShoot1 = false;
+setTimeout(function(){
+canShoot1 = true;
+},500);
+}
+if(l_facing == true){
+var leftlaser1 = new sjs.Image("Images/left_right_lazer-1.png");
+leftlaser1.type = "laser";
+leftlaser1.setSize(15,22);
+leftlaser1.friction = 0;
+leftlaser1.moveTo(player1.getX(),player1.getY()+28);
+leftlaser1.pushLeft(40);
+canShoot1 = false;
+setTimeout(function(){
+canShoot1 = true;
+},500);
+}
+if(u_facing == true){
+var uplaser1 = new sjs.Image("Images/up_down_lazer-1.png");
+uplaser1.type = "laser";
+uplaser1.setSize(22,15);
+uplaser1.friction = 0;
+uplaser1.moveTo(player1.getX()+26,player1.getY());
+uplaser1.pushUp(40);
+canShoot1 = false;
+setTimeout(function(){
+canShoot1 = true;
+},500);
+}
+if(d_facing == true){
+var downlaser1 = new sjs.Image("Images/up_down_lazer-1.png");
+downlaser1.type = "laser";
+downlaser1.setSize(22,15);
+downlaser1.friction = 0;
+downlaser1.moveTo(player1.getX()+28,player1.getY()+85);
+downlaser1.pushDown(40);
+canShoot1 = false;
+setTimeout(function(){
+canShoot1 = true;
+},500);
+}
+}
+});
+
+var player2 = new
+sjs.Image("Images/left_ship_2.gif");
+player2.type="player2";
+player2.setSize(100,75);
+player2.friction = .2;
+player2.accel = .25;
+player2.center().offset(300, 0);
+
+var l2_facing = true;
+var r2_track = 0;
+var l2_track = 0;
+var u2_track = 0;
+var d2_track = 0;
+
+sjs.keyDown(D_KEY, function(){
+player2.setImage("Images/right_ship_2.gif");
+player2.pushRight();
+player2.setSize(100,75);
+r2_facing = true;
+l2_facing = false;
+u2_facing = false;
+d2_facing = false;
+});
+sjs.keyDown(A_KEY, function(){
+player2.setImage("Images/left_ship_2.gif");
+player2.pushLeft();
+player2.setSize(100,75);
+l2_facing = true;
+r2_facing = false;
+u2_facing = false;
+d2_facing = false;
+});
+sjs.keyDown(W_KEY, function(){
+	player2.setImage("Images/forward_ship_2.gif");
+player2.pushUp();
+player2.setSize(75,100);
+u2_facing = true;
+l2_facing = false;
+r2_facing = false;
+d2_facing = false;
+});
+sjs.keyDown(S_KEY, function(){
+	player2.setImage("Images/down_ship_2.gif");
+player2.pushDown();
+player2.setSize(75,100);
+d2_facing = true;
+l2_facing = false;
+u2_facing = false;
+r2_facing = false;
+});
+
+var canShoot2 = true;
+sjs.keyDown(Q_KEY, function(){
+if(canShoot2 == true){
+	if(r2_facing == true){
+var rightlaser2 = new sjs.Image("Images/left_right_lazer-2.png");
+rightlaser2.type = "laser2";
+rightlaser2.setSize(15,22);
+rightlaser2.friction = 0;
+rightlaser2.moveTo(player2.getX()+85,player2.getY()+26);
+rightlaser2.pushRight(40);
+canShoot2 = false;
+setTimeout(function(){
+canShoot2 = true;
+},500);
+}
+if(l2_facing == true){
+var leftlaser2 = new sjs.Image("Images/left_right_lazer-2.png");
+leftlaser2.type = "laser2";
+leftlaser2.setSize(15,22);
+leftlaser2.friction = 0;
+leftlaser2.moveTo(player2.getX(),player2.getY()+28);
+leftlaser2.pushLeft(40);
+canShoot2 = false;
+setTimeout(function(){
+canShoot2 = true;
+},500);
+}
+if(u2_facing == true){
+var uplaser2 = new sjs.Image("Images/up_down_lazer-2.png");
+uplaser2.type = "laser2";
+uplaser2.setSize(22,15);
+uplaser2.friction = 0;
+uplaser2.moveTo(player2.getX()+26,player2.getY());
+uplaser2.pushUp(40);
+canShoot2 = false;
+setTimeout(function(){
+canShoot2 = true;
+},500);
+}
+if(d2_facing == true){
+var downlaser2 = new sjs.Image("Images/up_down_lazer-2.png");
+downlaser2.type = "laser2";
+downlaser2.setSize(22,15);
+downlaser2.friction = 0;
+downlaser2.moveTo(player2.getX()+28,player2.getY()+85);
+downlaser2.pushDown(40);
+canShoot2 = false;
+setTimeout(function(){
+canShoot2 = true;
+},500);
+}
+}
+});
+
+var left = new
+sjs.Image("Images/left_right_screen.png");
+left.type="side";
+left.setSize(10, sjs.getHeight());
+left.center().left();
+
+var right = new
+sjs.Image("Images/left_right_screen.png");
+right.type="side";
+right.setSize(10, sjs.getHeight());
+right.center().right();
+
+var up = new
+sjs.Image("Images/top_bottom_screen.png");
+up.type="side";
+up.setSize(sjs.getWidth(), 10);
+up.center().top();
+
+var down = new
+sjs.Image("Images/top_bottom_screen.png");
+down.type="side";
+down.setSize(sjs.getWidth(), 10);
+down.center().bottom();
+
+
+sjs.onHit("laser","side", function(x,y){
+x.destroy();
+});
+
+sjs.onHit("laser2","side", function(x,y){
+x.destroy();
+});
+
+sjs.onHit("laser","player2", function(x,y){
+x.destroy();
+y.destroy();
+window.location="player1wins.html";
+});
+
+sjs.onHit("laser2","player1", function(x,y){
+x.destroy();
+y.destroy();
+window.location="player2wins.html";
+});
+
+} //end start
+</script>
+</head>
+<body onload="start()">
+<h1> Space Combat </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>
